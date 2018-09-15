@@ -30,91 +30,12 @@
       position: relative;
     }
 
-    #mobile-warning {
-      display: none;
-    }
-
-    #mobile-warning.hidden {
-      display: none;
-    }
-
-    @media screen and (max-width: 767px) {
-      #mobile-warning {
-        display: block;
-
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        background: rgba(255, 255, 255, 0.9);
-        color: #0b2840;
-        z-index: 100;
-        padding: 20px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-
-      #mobile-warning small {
-        font-size: 1em;
-      }
-
-      #mobile-warning h1 {
-        line-height: 1;
-      }
-
-      #mobile-warning a {
-        display: block;
-        text-decoration: none;
-        margin: 1em 0;
-        font-weight: bold;
-        font-size: 1.4em;
-        color: #42a0dd;
-      }
-    }
+  
   </style>
 </head>
 <body>
   <main id="panel_root">
     <h1 style="text-align: center; color: #5d7e86;"> Loading... </h1>
   </main>
-  <div id="mobile-warning">
-    <h1> Best served on bigger screen sizes </h1>
-    <small> This tool presents complex graphs. Use it on bigger screen size for better experience </small>
-    <a id="skip_warning" href="#"> GOT IT </a>
-  </div>
-  <!-- <script>
-    var skipBtn = document.getElementById('skip_warning');
-    var warning = document.getElementById('mobile-warning');
-    if (document.cookie.indexOf('skip_mobile_warning=true') > -1) {
-      warning.classList.add('hidden');
-    } else {
-      var handler = function() {
-        warning.classList.add('hidden');
-        document.cookie = "skip_mobile_warning=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-      }
-      skipBtn.addEventListener('touchstart', handler, false);
-      skipBtn.addEventListener('click', handler, false);
-    }
-
-    window.addEventListener("load", function(event) {
-      GraphQLVoyager.init(document.getElementById('panel_root'), {
-        _schemaPresets: window.VOYAGER_PRESETS,
-        introspection: false
-      });
-    })
-  </script> -->
-  <!-- <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-77831907-1', 'auto');
-    ga('send', 'pageview');
-
-  </script> -->
 </body>
 </html>
