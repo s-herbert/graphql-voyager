@@ -2,7 +2,6 @@ import { StateInterface } from '../reducers';
 import * as _ from 'lodash';
 import { createSelector } from 'reselect';
 import {
-  buildClientSchema,
   introspectionFromSchema,
   lexicographicSortSchema,
   IntrospectionSchema,
@@ -233,7 +232,7 @@ function assignTypesAndIDs(schema: SimplifiedIntrospection) {
 function getSchema(introspection: any, sortByAlphabet: boolean, skipRelay: boolean) {
   if (!introspection) return null;
 
-  let schema = buildClientSchema(introspection.data);
+  let schema = introspection;
   if (sortByAlphabet) {
     schema = lexicographicSortSchema(schema);
   }
