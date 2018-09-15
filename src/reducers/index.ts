@@ -4,6 +4,7 @@ import * as ActionTypes from '../actions/';
 
 import { extractTypeId } from '../introspection';
 
+
 export type DisplayOptions = {
   rootTypeId?: string;
   skipRelay: boolean;
@@ -14,14 +15,6 @@ export type DisplayOptions = {
 
 export type StateInterface = {
   schema: any;
-  schemaModal: {
-    opened: boolean;
-    activePreset: string | null;
-    notApplied: {
-      presetValue: any;
-      activePreset: string;
-    } | null;
-  };
   displayOptions: DisplayOptions;
   selected: {
     previousTypesIds: string[];
@@ -39,11 +32,6 @@ export type StateInterface = {
 
 const initialState: StateInterface = {
   schema: null,
-  schemaModal: {
-    opened: false,
-    activePreset: null,
-    notApplied: null,
-  },
   displayOptions: {
     rootTypeId: undefined,
     skipRelay: true,
