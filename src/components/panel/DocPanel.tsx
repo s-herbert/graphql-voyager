@@ -16,12 +16,7 @@ export default class DocPanel extends React.Component<DocPanelProps> {
         <div className="contents">
           {this.props.header}
           <TypeDoc />
-          <div className="powered-by">
-            🛰 Powered by{' '}
-            <a href="https://github.com/APIs-guru/graphql-voyager" target="_blank">
-              GraphQL Voyager
-            </a>
-          </div>
+          
         </div>
         <TypeInfoPopover />
       </div>

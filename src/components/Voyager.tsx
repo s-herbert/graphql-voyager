@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 
-import { introspectionQuery } from 'graphql/utilities';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
 import { MuiThemeProvider } from '@material-ui/core/styles';
@@ -19,7 +18,7 @@ import DocPanel from './panel/DocPanel';
 import { SVGRender } from './../graph/';
 import { Viewport } from './../graph/';
 
-import { changeSchema, reportError, changeDisplayOptions } from '../actions/';
+import { changeSchema, changeDisplayOptions } from '../actions/';
 
 import { typeNameToId } from '../introspection/';
 import { StateInterface } from '../reducers';
@@ -94,23 +93,10 @@ export default class Voyager extends React.Component<VoyagerProps> {
   }
 
   updateIntrospection() {
+    console.log('UPDATING INTRO');
     let displayOpts = normalizeDisplayOptions(this.props.displayOptions);
-    if (_.isFunction(this.props.introspection)) {
-      let promise = (this.props.introspection as IntrospectionProvider)(introspectionQuery);
 
-      if (!isPromise(promise)) {
-        this.store.dispatch(
-          reportError('SchemaProvider did not return a Promise for introspection.'),
-        );
-      }
-
-      promise.then(schema => {
-        if (schema === this.store.getState().schema) return;
-        this.store.dispatch(changeSchema(schema, displayOpts));
-      });
-    } else if (this.props.introspection) {
-      this.store.dispatch(changeSchema(this.props.introspection, displayOpts));
-    }
+    this.store.dispatch(changeSchema(this.props.introspection, displayOpts));
   }
 
   componentDidUpdate(prevProps: VoyagerProps) {
@@ -158,9 +144,9 @@ export default class Voyager extends React.Component<VoyagerProps> {
 }
 
 // Duck-type promise detection.
-function isPromise(value) {
-  return typeof value === 'object' && typeof value.then === 'function';
-}
+// function isPromise(value) {
+//   return typeof value === 'object' && typeof value.then === 'function';
+// }
 
 function normalizeDisplayOptions(opts: VoyagerDisplayOptions = {}) {
   return {

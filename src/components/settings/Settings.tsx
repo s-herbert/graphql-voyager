@@ -18,7 +18,7 @@ function mapStateToProps(state) {
   const schema = getSchemaSelector(state);
   return {
     options: state.displayOptions,
-    schema: schema,
+    schema
   };
 }
 
@@ -51,13 +51,6 @@ export class Settings extends React.Component<SettingsProps> {
             onChange={event => onChange({ ...options, sortByAlphabet: event.target.checked })}
           />
           <label htmlFor="sort">Sort by Alphabet</label>
-          <Checkbox
-            id="skip"
-            color="primary"
-            checked={!!options.skipRelay}
-            onChange={event => onChange({ ...options, skipRelay: event.target.checked })}
-          />
-          <label htmlFor="skip">Skip Relay</label>
           <Checkbox
             id="showLeafFields"
             color="primary"
